@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package teammate_communication;
+
+enum CoordType {
+    LOCAL = 0;
+    GLOBAL = 1;
+}
+
+enum Role {
+    KEEPER = 0;
+    DEFENDER = 1;
+    ATTACKER = 2;
+    NEUTRAL = 3;
+}
+
+message LocalPosition {
+    float x = 1;
+    float y = 2;
+    float yaw = 3;
+    bool valid = 4;   // 有効な値がどうかを示す
+}
+
+message GlobalPosition {
+    float x = 1;
+    float y = 2;
+    float yaw = 3;
+    bool valid = 4;   // 有効な値がどうかを示す
+}
+
+// Communication message for unicast data exchange
+message TeamCommunicationMsg {
+    int32 validation = 1;     // バリデーション用番号 52149
+    int32 robot_id = 2;       // 1-indexed
+    GlobalPosition selfpos = 3;
+    GlobalPosition ballpos = 4;
+    LocalPosition ballpos_local = 5;  // 変換していない観測そのままの値
+    Role role = 6;
+    float strategy_hz = 7;
+}

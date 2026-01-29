@@ -1,0 +1,20 @@
+# 全てのロボットで共通に利用される戦略
+game_config:
+  first_half_our_side: right
+neck_config:
+  neck_pitch_down_limit: 0.785        #(rad) 首の角度の下限 下向き。これを大きくすると首が下を向く角度が大きくなる
+  neck_pitch_up_limit:  0.30          #(rad) 首の角度の上限 上向き。これを小さくすると首が上を向く角度が大きくなる
+  search_neck_pitch_up: 0.42    #(rad) 探索時の首の上向きの角度
+  search_neck_pitch_down: 0.785 #(rad) 探索時の首の下向きの角度
+game_controller_address: "192.168.1.2" #実ロボットでの動作時のゲーコンのアドレス
+sim_game_controller_address: "255.255.255.255" #simでの動作時のゲーコンのアドレス
+infoshare_broadcast_address: "192.168.255.255" #infoshareでブロードキャストする時のアドレス
+filter_config:
+  lpf_alpha: 0.8 # 高いと応答性が良い
+  pf_config:
+    particle_num: 1000 # 大きい方が計算が遅くなる
+    num_seq: 9 # 大きいほどフィルターの掛かりが強くなるが応答性が落ちる
+    missing_count: 10 # ボールが観測できない時にフィルターからの情報を利用するのを止める閾値
+ball_outside_config:
+  x_threshould: 150  # x方向でフィールド外に何(cm)出たらボールじゃないものと認識するかの閾値
+  y_threshould: 150  # y方向でフィールド外に何(cm)出たらボールじゃないものと認識するかの閾値

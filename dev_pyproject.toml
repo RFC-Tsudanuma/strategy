@@ -1,0 +1,111 @@
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+# 
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
+# 
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+# THE SOFTWARE.
+
+# This file is based on https://github.com/Geson-anko/ros2_uv_template.
+# 2026 Geson-anko ,Satoshi Inoue ,RFC-Tsudanuma
+
+[project]
+name = "strategy"
+version = "0.0.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "networkx>=3.4.2",
+    "protobuf>=6.33.1",
+    "pyyaml>=6.0.2",
+    "pytest",
+]
+
+[tool.uv]
+python-preference = "only-system"
+
+[dependency-groups]
+# ここに入っているのは環境によって異なるパッケージ群
+dev = [
+    "numpy>=2.2.6; platform_machine != 'aarch64'",
+    "numba>=0.60.0; platform_machine != 'aarch64'",
+    "scipy>=1.15.3; platform_machine != 'aarch64'",
+    "coverage>=7.6.8; platform_machine != 'aarch64'",
+    "pyqt6",
+    "matplotlib>=3.10.3",
+    "ruff>=0.12.7",
+]
+
+[tool.ruff]
+
+# Same as Black.
+line-length = 88
+indent-width = 4
+
+# Assume Python 3.10
+target-version = "py310"
+
+include = ["*.py"]
+
+# Exclude a variety of commonly ignored directories.
+exclude = [
+    ".git",
+    ".ipynb_checkpoints",
+    ".pytest_cache",
+    ".ruff_cache",
+    ".venv",
+    ".vscode",
+    "build",
+    "dist",
+    "node_modules",
+    ".venv",
+]
+
+# Linter ignore codes
+[tool.ruff.lint]
+
+select = [
+  "E",
+  "F",
+  "W",
+  "I",
+]
+
+ignore = [
+  "E203", # Whitespace before ':' (E203)
+  "E402", # Module level import not at top of file.
+  "E501", # Line too long (82 &gt; 79 characters) (E501)
+  "F811", # Redefinition of unused name from line n (F811)
+  "E741", # Do not define classes named 'I', 'O', or 'l' (E742)
+  "E266", # too many leading '#' for block comment (E266)
+  "F401", # Module imported but unused,
+]
+
+
+[tool.ruff.lint.isort]
+combine-as-imports = true
+
+[tool.ruff.format]
+# Like Black, use double quotes for strings.
+quote-style = "double"
+
+# Like Black, indent with spaces, rather than tabs.
+indent-style = "space"
+
+# Like Black, respect magic trailing commas.
+skip-magic-trailing-comma = false
+
+# Like Black, automatically detect the appropriate line ending.
+line-ending = "auto"
+

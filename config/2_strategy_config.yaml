@@ -1,0 +1,37 @@
+# 戦略の一般的な設定
+common_config:
+  team_color: blue                    # チームカラー
+  team_id: 48                         # チームID (26はnimbro、20はMRL、28がsweaty)
+  robot_id: 2                         # ロボットのID
+  is_keeper: false                    # キーパーかどうか
+  enable_team_communication: true     # チームでの情報共有を行うかを決める
+
+  ball_near_range: 60.0                #(cm) ボールが近いと判断する閾値[BALL_POSITION.NEAR]
+
+  kick_angle_range: 0.25              #(rad) キックするためのボールとの角度。この角度以下になったら直進して蹴る
+  x_near_kick_range: 0.0             # キックレンジ
+  x_far_kick_range: 60.0              # ドリブルしかしないのでball_near_rangeと同じ
+  y_right_kick_range: -10.0
+  y_left_kick_range: 12.0
+
+  kick_adjust_turn_vel_scale: 0.7     # キックするために回転を調整する速度に掛ける係数
+  kick_speed_x_scale: 0.7             # キックをするために前進する時のスピードの係数
+  predict_valid_std_range: 300        # これ以下だったらボールの予測は有効であると判断
+
+  goal_kick_ball_position_space: 160.0 # キック時に回り込みをする距離の大きさ(cm)
+  get_behind_ball_position_space: 50.0  # [refine]ボールの手前で停止する距離(cm)
+  walk_x_scale: 1.0                   # generate_walk_commandでコマンド生成する時の係数
+  walk_y_scale: 1.0                  # generate_walk_commandでコマンド生成する時の係数
+  walk_yaw_scale: 1.0                # generate_walk_commandでコマンド生成する時の係数
+
+
+position_config:
+  robot_1:
+    ready_x: -200.0 # グローバル座標(cm)
+    ready_y: 0.0 # グローバル座標(cm)
+  robot_2:
+    ready_x: -450.0
+    ready_y: -150.0
+  robot_3:
+    ready_x: -600.0
+    ready_y: 0.0
