@@ -10,10 +10,9 @@ This package serves as the strategic decision-making system enabling humanoid ro
 
 - HTN-based hierarchical task planning
 - Role allocation system (Attacker, Defender, Follower, etc.)
-- RRT* path planning
+- A* path planning
 - Ball prediction and filtering
 - Inter-robot communication (Teammate communication)
-- RoboCup GameController support
 - Debug visualizer
 
 ## Technical Details
